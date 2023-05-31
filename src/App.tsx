@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { SidebarComponent } from "./components/SidebarComponent";
+import { Header } from "./components/Header";
+import { Route, Routes } from "react-router-dom";
+import { Sales } from "./screens/sales/Sales";
+import { Dashboard } from "./screens/dashboard/Dashboard";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <div className="app">
+        <div id="sideBar">
+          <SidebarComponent />
+          {/* collapsed={collapsed} */}
+        </div>
+        <div id="routeBar">
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/sales" element={<Sales />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
