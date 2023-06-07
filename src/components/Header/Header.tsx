@@ -12,9 +12,9 @@ import {
   Menu,
   MenuItem,
   Badge,
+  TextField,
 } from "@mui/material";
 import { tabTitle } from "./HeaderExtended";
-import { useLocation } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 export const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -37,12 +37,21 @@ export const Header = () => {
   return (
     <Container fluid id="header">
       <Row>
-        <Col xs={1} id="pageTitleDiv">
+        <Col xs={2} id="pageTitleDiv">
           <p>{tabTitle}</p>
         </Col>
-        <Col xs={{ span: "1", offset: "7" }} id="notificationBox">
+        <Col xs={{ span: "3", offset: "2" }}>
+          {/* style={{ backgroundColor: "yellow" }} */}
+          <TextField
+            style={{ width: "100%", marginTop: "-0.5rem" }}
+            label="Search"
+            id="outlined-size-small"
+            size="small"
+          />
+        </Col>
+        <Col xs={{ span: "1", offset: "3" }}>
           <Box
-            id="user-icon-box"
+            id="notificationBox"
             sx={{
               display: "flex",
               textAlign: "center",
@@ -103,6 +112,7 @@ export const Header = () => {
         </Col>
         <Col xs={1}>
           <Box
+            id="user-icon-box"
             sx={{
               marginTop: "-1.25rem",
             }}

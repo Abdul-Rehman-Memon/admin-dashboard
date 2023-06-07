@@ -27,7 +27,13 @@ import {
   BarElement,
 } from "chart.js";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
-
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  Marker,
+  ZoomableGroup,
+} from "react-simple-maps";
 ChartJS.register(
   ArcElement,
   CategoryScale,
@@ -39,10 +45,13 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+const geoUrl =
+  "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
+
 export const Dashboard = () => {
   return (
-    <Container fluid style={{ padding: ".5rem !important " }}>
-      <Row style={{ height: "23rem" }}>
+    <Container fluid style={{ padding: "0.5rem !important " }}>
+      <Row style={{ minHeight: "23rem" }}>
         <Col xs={3}>
           <div className="boxes">
             <h2>Sales By Product</h2>
@@ -66,15 +75,36 @@ export const Dashboard = () => {
           </div>
         </Col>
       </Row>
-      <Row style={{ height: "20rem" }}>
-        <Col xs={5}>
+      <Row style={{ minHeight: "19rem" }}>
+        <Col xs={6}>
+          <div className="boxes" id="map-box">
+            <h2> Sales By Region </h2>
+            <ComposableMap>
+              <ZoomableGroup center={[789, 30]} zoom={10}>
+                <Geographies geography={geoUrl}>
+                  {({ geographies }) =>
+                    geographies.map((geo) => (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        fill="#f3f3f3"
+                        stroke="black"
+                      />
+                    ))
+                  }
+                </Geographies>
+                <Marker coordinates={[789, 30]}>
+                  <circle r={3} fill="#FF5533" />
+                </Marker>
+              </ZoomableGroup>
+            </ComposableMap>
+          </div>
+        </Col>
+        <Col xs={6}>
           <div className="boxes">
             <h2>Sales Bifurcation</h2>
             <Bar options={salesBifurcationOptions} data={salesBifurcation} />
           </div>
-        </Col>
-        <Col xs={7}>
-          <div className="boxes"></div>
         </Col>
       </Row>
       <Row>

@@ -144,7 +144,7 @@ export const salesdata: any = {
     {
       label: ["Socks", "T Shirts", "Pants", "Hats", "Eye Wear"],
       data: [50, 75, 68, 24, 48],
-      backgroundColor: ["black", "#d3d3d3", "#c0c0c0", "#bebebe", "#bfc1c2"],
+      backgroundColor: ["black", "#808080", "#a9a9a9", "#d3d3d3", "#dcdcdc"],
       hoverOffset: 4,
     },
   ],
@@ -185,7 +185,7 @@ export const Inventorydata: any = {
     {
       label: ["Socks", "T Shirts", "Pants", "Hats", "Eye Wear"],
       data: [50, 75, 68, 24, 48],
-      backgroundColor: ["black", "#d3d3d3", "#c0c0c0", "#bebebe", "#bfc1c2"],
+      backgroundColor: ["black", "#808080", "#a9a9a9", "#d3d3d3", "#dcdcdc"],
       hoverOffset: 4,
     },
   ],
@@ -204,12 +204,12 @@ export const salesBifurcation = {
     {
       label: "Offline Sales",
       data: [45, 49, 50, 61, 16, 20, 30],
-      backgroundColor: ["#d3d3d3"],
+      backgroundColor: ["#a9a9a9"],
     },
     {
       label: "Total Sales",
       data: [65, 59, 80, 81, 56, 55, 40],
-      backgroundColor: ["#c0c0c0"],
+      backgroundColor: ["#d3d3d3"],
     },
   ],
 };
