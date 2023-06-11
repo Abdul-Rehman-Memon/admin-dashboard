@@ -51,14 +51,15 @@
   cursor: pointer;
 }
 .css-1t8x7v1 > .ps-menu-button:hover {
-  background-color: black !important;
+  background-color: none;
+  border-right: 3px solid black;
 }
-.css-1t8x7v1 > .ps-menu-button:hover span {
+/* .css-1t8x7v1 > .ps-menu-button:hover span {
   color: white !important;
 }
-.css-1t8x7v1 > .ps-menu-button:hover span svg {
-  background-color: white !important;
-}
+.css-1t8x7v1 > .ps-menu-button:hover .ps-menu-button .MuiSvgIcon-root path {
+  color: white !important;
+} */
 .css-dip3t8 {
   background-color: transparent !important;
   border: none;

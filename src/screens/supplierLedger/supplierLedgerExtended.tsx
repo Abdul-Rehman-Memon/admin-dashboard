@@ -5,8 +5,9 @@ import {
   GridToolbarDensitySelector,
   GridToolbarExport,
 } from "@mui/x-data-grid";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 export const supplierLegerCustomToolbar = () => {
   return (
     <GridToolbarContainer>
@@ -180,61 +181,155 @@ export const supplierLegerRowData: any = [
   },
 ];
 
-export const supplierLegerColumnData: any = [
+export const useSupplierLegerColumnData: any = () => {
+  const navigate = useNavigate();
+  const supplierLegerColumnData: any = [
+    { id: 1, width: "50", field: "Id" },
+    { id: 2, width: "185", field: "Supplier Name" },
+    { id: 3, width: "185", field: "Credit Amount" },
+    { id: 4, width: "185", field: "City" },
+    { id: 5, width: "185", field: "Date" },
+    {
+      id: 8,
+      width: "250",
+      field: "Ledger",
+      renderCell: (params: any) => (
+        <Btn btn={"supplier"} title={"View Supplier Ledger"} params={params} />
+      ),
+    },
+    {
+      id: 9,
+      width: "250",
+      field: "Products",
+      renderCell: (params: any) => (
+        <Btn btn={"Modal"} title={"View Products"} params={params} />
+      ),
+    },
+  ];
+
+  const Btn = (props: any) => {
+    const HandleButtonClick = () => {
+      if (props.btn === "supplier") {
+        navigate(`/supplier-ledger/${props.params.row.id}`);
+      }
+      if (props.btn === "Modal") {
+        return;
+      }
+    };
+    return (
+      <Button
+        style={{ color: "black", borderColor: "black !important" }}
+        variant="outlined"
+        onClick={() => HandleButtonClick()}
+      >
+        {props.title}
+      </Button>
+    );
+  };
+  return supplierLegerColumnData;
+};
+
+export const useCreditorInfo = () => {
+  const navigate = useParams();
+  let [creditorName, setcreditorName] = useState("");
+  let [creditAmount, setcreditAmount] = useState(``);
+
+  useEffect(() => {
+    getCreditorName();
+    getCreditorAmount();
+  }, [navigate]);
+  let getCreditorName: any = () => {
+    const creditor = supplierLegerRowData.find((d: any) => d.id == navigate.id);
+
+    if (navigate.id) {
+      supplierLegerRowData.filter((d: any) =>
+        d.id == navigate.id ? setcreditorName(d["Supplier Name"]) : ""
+      );
+      // setcreditorName(creditor["Supplier Name"]);
+    }
+    if (!navigate.id) {
+      setcreditorName("");
+    }
+  };
+
+  let getCreditorAmount: any = () => {
+    if (navigate) {
+      supplierLegerRowData.filter((d: any) =>
+        d.id == navigate.id ? setcreditAmount(d["Credit Amount"]) : ""
+      );
+    }
+    if (!navigate.id) {
+      setcreditAmount("");
+    }
+  };
+
+  return { creditorName, creditAmount, creditorsColumn, creditorsRows };
+};
+let creditorsRows = [
+  {
+    id: 1,
+    Id: "S0001",
+    "Transaction Type": "Cash Paid",
+    "Transaction Amount": 500,
+    Date: "2023-06-10",
+    "Amount Paid": 500,
+    "Amount Credited": "-",
+  },
+  {
+    id: 2,
+    Id: "S0001",
+    "Transaction Type": "Goods Purchased",
+    "Transaction Amount": 1000,
+    Date: "2023-06-09",
+    "Amount Paid": "-",
+    "Amount Credited": 1000,
+  },
+  {
+    id: 3,
+    Id: "S0002",
+    "Transaction Type": "Both",
+    "Transaction Amount": 1500,
+    Date: "2023-06-08",
+    "Amount Paid": 1000,
+    "Amount Credited": 500,
+  },
+  {
+    id: 4,
+    Id: "S0003",
+    "Transaction Type": "Goods Purchased",
+    "Transaction Amount": 2000,
+    Date: "2023-06-07",
+    "Amount Paid": "-",
+    "Amount Credited": 2000,
+  },
+  {
+    id: 5,
+    Id: "S0003",
+    "Transaction Type": "Goods Purchased",
+    "Transaction Amount": 2000,
+    Date: "2023-06-07",
+    "Amount Paid": 1000,
+    "Amount Credited": 2000,
+  },
+];
+
+let creditorsColumn: any = [
   { id: 1, width: "50", field: "Id" },
-  { id: 2, width: "185", field: "Supplier Name" },
-  { id: 3, width: "185", field: "Credit Amount" },
-  { id: 4, width: "185", field: "City" },
-  { id: 5, width: "185", field: "Date" },
+  { id: 2, width: "185", field: "Transaction Type" },
+  { id: 3, width: "185", field: "Transaction Amount" },
+  { id: 4, width: "185", field: "Amount Paid" },
+  { id: 5, width: "185", field: "Amount Credited" },
   {
     id: 8,
     width: "250",
     field: "Ledger",
     renderCell: (params: any) => (
-      <Btn
-        btn={"supplier"}
-        title={"View Supplier Ledger"}
-        params={params}
-        url={"/supplier-ledger"}
-      />
-      //   <Button
-      //     style={{ color: "black", borderColor: "black !important" }}
-      //     variant="outlined"
-      //     onClick={() => HandleButtonClick(params.row.id, "transaction")}
-      //   >
-      //     View Supplier Ledger
-      //   </Button>
-    ),
-  },
-  {
-    id: 9,
-    width: "250",
-    field: "Products",
-    renderCell: (params: any) => (
-      <Btn btn={"Modal"} title={"View Products"} params={params} />
+      <Button
+        style={{ color: "black", borderColor: "black !important" }}
+        variant="outlined"
+      >
+        View products
+      </Button>
     ),
   },
 ];
-
-const Btn = (props: any) => {
-  // const navigate = useNavigate();
-  const HandleButtonClick = (e: any) => {
-    console.log(props.btn);
-    if (props.btn === "supplier") {
-      return <Navigate to="/sales" />;
-    }
-    if (props.btn === "Modal") {
-      return;
-    }
-  };
-  return (
-    <Button
-      style={{ color: "black", borderColor: "black !important" }}
-      variant="outlined"
-      href={props.url}
-      onClick={() => HandleButtonClick}
-    >
-      {props.title}
-    </Button>
-  );
-};

@@ -6,6 +6,7 @@ import {
   GridToolbarDensitySelector,
   GridToolbarExport,
 } from "@mui/x-data-grid";
+import { useNavigate } from "react-router-dom";
 
 export const InventoryCustomToolbar = () => {
   return (
@@ -223,44 +224,47 @@ export const InventoryRowData: any = [
   },
 ];
 
-export const InventoryColumnData: any = [
-  { id: 1, width: "50", field: "Id" },
-  { id: 2, width: "150", field: "Supplier Name" },
-  { id: 3, width: "150", field: "Transanction Amount" },
-  { id: 4, width: "150", field: "City" },
-  { id: 5, width: "150", field: "Date" },
-  { id: 6, width: "150", field: "Dispatched From" },
-  { id: 7, width: "150", field: "Receipt ID" },
-  {
-    id: 8,
-    width: "250",
-    field: "Ledger",
-    renderCell: (params: any) => (
-      <Button
-        style={{ color: "black", borderColor: "black !important" }}
-        variant="outlined"
-        onClick={() => handleButtonClick(params.row.id)}
-      >
-        View Supplier Ledger
-      </Button>
-    ),
-  },
-  {
-    id: 9,
-    width: "250",
-    field: "Transaction",
-    renderCell: (params: any) => (
-      <Button
-        style={{ color: "black", borderColor: "black !important" }}
-        variant="outlined"
-        onClick={() => handleButtonClick(params.row.id)}
-      >
-        Print Receipt
-      </Button>
-    ),
-  },
-];
+export const useInventoryColumnData: any = () => {
+  const navigate = useNavigate();
+  const handleButtonClick = (id: any) => {
+    navigate("/supplier-ledger");
+  };
+  const InventoryColumnData = [
+    { id: 1, width: "50", field: "Id" },
+    { id: 2, width: "150", field: "Supplier Name" },
+    { id: 3, width: "150", field: "Transanction Amount" },
+    { id: 4, width: "150", field: "City" },
+    { id: 5, width: "150", field: "Date" },
+    { id: 6, width: "150", field: "Dispatched From" },
+    { id: 7, width: "150", field: "Receipt ID" },
+    {
+      id: 8,
+      width: "250",
+      field: "Ledger",
+      renderCell: (params: any) => (
+        <Button
+          style={{ color: "black", borderColor: "black !important" }}
+          variant="outlined"
+          onClick={() => handleButtonClick(params.row.id)}
+        >
+          View Supplier Ledger
+        </Button>
+      ),
+    },
+    {
+      id: 9,
+      width: "250",
+      field: "Transaction",
+      renderCell: (params: any) => (
+        <Button
+          style={{ color: "black", borderColor: "black !important" }}
+          variant="outlined"
+        >
+          Print Receipt
+        </Button>
+      ),
+    },
+  ];
 
-const handleButtonClick = (id: any) => {
-  console.log(id);
+  return InventoryColumnData;
 };

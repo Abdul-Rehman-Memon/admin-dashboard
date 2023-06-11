@@ -1,25 +1,8 @@
-import { DataGrid } from "@mui/x-data-grid";
-import { Row, Col } from "react-bootstrap";
-import { Button } from "@mui/material";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import React, { useState } from "react";
-import {
-  InventoryRowData,
-  InventoryCustomToolbar,
-  useInventoryColumnData,
-} from "./InventoryExtended";
-import { InventoryModal } from "./inventoryModal/InventoryModal";
-export const Inventory = () => {
-  const InventoryColumnData = useInventoryColumnData();
-  const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
-    return;
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+import { Row, Col, Button } from "react-bootstrap";
+
+export const CashFlow = () => {
   return (
     <div className="boxes-container">
       <Row>
@@ -46,11 +29,9 @@ export const Inventory = () => {
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
             variant="outlined"
-            onClick={handleClickOpen}
           >
-            Add Inventory
+            Add Sales
           </Button>
-          <InventoryModal open={open} handleClose={handleClose} />
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
             variant="outlined"
@@ -59,13 +40,6 @@ export const Inventory = () => {
           </Button>
         </Col>
       </Row>
-      <DataGrid
-        rows={InventoryRowData}
-        columns={InventoryColumnData}
-        slots={{
-          toolbar: InventoryCustomToolbar,
-        }}
-      />
     </div>
   );
 };

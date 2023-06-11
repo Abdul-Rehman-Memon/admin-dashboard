@@ -27,6 +27,7 @@ export const Sales = () => {
         <Col xs={3}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
+              sx={{ width: "100%" }}
               label="Start Date"
               slotProps={{ textField: { size: "small" } }}
             />
@@ -35,6 +36,7 @@ export const Sales = () => {
         <Col xs={3}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
+              sx={{ width: "100%" }}
               label="End Date"
               slotProps={{ textField: { size: "small" } }}
             />

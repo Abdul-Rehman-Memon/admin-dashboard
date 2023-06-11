@@ -14,9 +14,10 @@ import {
   Badge,
   TextField,
 } from "@mui/material";
-import { tabTitle } from "./HeaderExtended";
+import { useTabTitle } from "./HeaderExtended";
 import { Col, Container, Row } from "react-bootstrap";
 export const Header = () => {
+  const tabTitle = useTabTitle();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [anchorE2, setAnchorE2] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
