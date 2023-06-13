@@ -193,3 +193,10 @@ button {
   background-color: black !important;
   float: right !important;
 }
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  top: -7px !important;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  min-width: 30% !important;
+}

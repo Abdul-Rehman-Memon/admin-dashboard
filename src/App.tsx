@@ -8,6 +8,7 @@ import { Inventory } from "./screens/inventory/Inventory";
 import { SupplierLedger } from "./screens/supplierLedger/SupplierLedger";
 import { CustomerLedger } from "./screens/customerLedger/customerLedger";
 import { CashFlow } from "./screens/cashFLow/cashFlow";
+import { Settings } from "./screens/settings/settings";
 function App() {
   return (
     <div>
@@ -26,8 +27,7 @@ function App() {
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/supplier-ledger" element={<SupplierLedger />} />
             <Route path="/supplier-ledger/:id" element={<SupplierLedger />} />
-            <Route path="/sales" element={<Sales />} />
-            <Route path="/sales" element={<Sales />} />
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </div>
       </div>

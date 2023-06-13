@@ -9,6 +9,7 @@ import {
 } from "./customerLedgerExtended";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { CustomerModal } from "./CustomerModal/customerModal";
 
 export const CustomerLedger = () => {
   const customerInfo = useCustomerInfo();
@@ -19,6 +20,15 @@ export const CustomerLedger = () => {
   const [customerLegerRowData, setcustomerLegerRowData]: any = useState(
     customerLedgerRowData
   );
+
+  let [IscustomerModal, setIscustomerModal] = useState(false);
+
+  const handleOpenCustomerModal: any = () => {
+    setIscustomerModal(true);
+  };
+  const handleCloseCustomerModal: any = () => {
+    setIscustomerModal(false);
+  };
 
   useEffect(() => {
     checkUser();
@@ -74,14 +84,19 @@ export const CustomerLedger = () => {
         </Col>
         <Col xs={3}></Col>
         <Col xs={3}>
-          {/* <Button
+          <Button
             style={{ float: "right", margin: "0 0.5rem" }}
             variant="outlined"
-            onClick={handleClickOpen}
+            onClick={handleOpenCustomerModal}
           >
-            Add Sales
-          </Button> */}
-          {/* <SalesModal open={open} handleClose={handleClose} /> */}
+            Add Customer
+          </Button>
+          {IscustomerModal && (
+            <CustomerModal
+              open={IscustomerModal}
+              handleClose={handleCloseCustomerModal}
+            />
+          )}
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
             variant="outlined"

@@ -9,6 +9,7 @@ import { useCreditorInfo } from "./supplierLedgerExtended";
 import { useEffect, useState } from "react";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { SupplierModal } from "./supplierModal/supplierModal";
 
 export const SupplierLedger = () => {
   const creditorInfo = useCreditorInfo();
@@ -33,6 +34,15 @@ export const SupplierLedger = () => {
       setsupplierLegerColumnData(suppliercolumnData);
       setsupplierLegerRowDatas(supplierLegerRowData);
     }
+  };
+
+  let [IscustomerModal, setIscustomerModal] = useState(false);
+
+  const handleOpenCustomerModal: any = () => {
+    setIscustomerModal(true);
+  };
+  const handleCloseCustomerModal: any = () => {
+    setIscustomerModal(false);
   };
 
   return (
@@ -70,6 +80,17 @@ export const SupplierLedger = () => {
         </Col>
         <Col xs={3}></Col>
         <Col xs={3}>
+          <Button
+            style={{ float: "right", margin: "0 0.5rem" }}
+            variant="outlined"
+            onClick={handleOpenCustomerModal}
+          >
+            Add Supplier
+          </Button>
+          <SupplierModal
+            open={IscustomerModal}
+            handleClose={handleCloseCustomerModal}
+          />
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
             variant="outlined"

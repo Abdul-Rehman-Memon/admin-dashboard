@@ -185,37 +185,24 @@ export const useCustomerLedgerColumnData: any = () => {
   const navigate = useNavigate();
   const customerLedgerColumn = [
     { id: 1, width: "50", field: "Id" },
-    { id: 2, width: "185", field: "Customer Name" },
-    { id: 3, width: "185", field: "Debit Amount" },
-    { id: 4, width: "185", field: "City" },
-    { id: 5, width: "185", field: "Date" },
+    { id: 2, width: "230", field: "Customer Name" },
+    { id: 3, width: "230", field: "Debit Amount" },
+    { id: 4, width: "230", field: "City" },
+    { id: 5, width: "230", field: "Date" },
     {
       id: 8,
       width: "250",
       field: "Ledger",
       renderCell: (params: any) => (
-        <Btn btn={"customer"} title={"View Customer Ledger"} params={params} />
-      ),
-    },
-    {
-      id: 9,
-      width: "250",
-      field: "Products",
-      renderCell: (params: any) => (
-        <Btn btn={"Modal"} title={"View Products"} params={params} />
+        <Btn title={"View Customer Ledger"} params={params} />
       ),
     },
   ];
 
   const Btn = (props: any) => {
     const HandleButtonClick = () => {
-      if (props.btn === "customer") {
-        console.log(props.params.row.id);
-        return navigate(`/customer-ledger/${props.params.row.id}`);
-      }
-      if (props.btn === "Modal") {
-        return;
-      }
+      console.log(props.params.row.id);
+      return navigate(`/customer-ledger/${props.params.row.id}`);
     };
     return (
       <Button
@@ -324,13 +311,13 @@ let customersColumn: any = [
   {
     id: 8,
     width: "250",
-    field: "Ledger",
+    field: "Invoice",
     renderCell: (params: any) => (
       <Button
         style={{ color: "black", borderColor: "black !important" }}
         variant="outlined"
       >
-        View products
+        Invoice
       </Button>
     ),
   },

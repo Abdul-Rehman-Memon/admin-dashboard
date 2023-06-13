@@ -9,16 +9,25 @@ import {
   InventoryCustomToolbar,
   useInventoryColumnData,
 } from "./InventoryExtended";
-import { InventoryModal } from "./inventoryModal/InventoryModal";
+import { ProductModal } from "./productModal/productModal";
+import { InventoryModal } from "./salesModal/InventoryModal";
 export const Inventory = () => {
   const InventoryColumnData = useInventoryColumnData();
-  const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
+  const [openProduct, setOpenProduct] = React.useState(false);
+  const handleProductOpen = () => {
+    setOpenProduct(true);
     return;
   };
-  const handleClose = () => {
-    setOpen(false);
+  const handlePrroductClose = () => {
+    setOpenProduct(false);
+  };
+  const [openInventoryModal, setOpenInventoryModal] = React.useState(false);
+  const handleInventoryOpen = () => {
+    setOpenInventoryModal(true);
+    return;
+  };
+  const handleInventoryClose = () => {
+    setOpenInventoryModal(false);
   };
   return (
     <div className="boxes-container">
@@ -41,16 +50,26 @@ export const Inventory = () => {
             />
           </LocalizationProvider>
         </Col>
-        <Col xs={3}></Col>
-        <Col xs={3}>
+        <Col xs={6}>
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
             variant="outlined"
-            onClick={handleClickOpen}
+            onClick={handleInventoryOpen}
           >
             Add Inventory
           </Button>
-          <InventoryModal open={open} handleClose={handleClose} />
+          <InventoryModal
+            open={openInventoryModal}
+            handleClose={handleInventoryClose}
+          />
+          <Button
+            style={{ float: "right", margin: "0 0.5rem" }}
+            variant="outlined"
+            onClick={handleProductOpen}
+          >
+            Add Product
+          </Button>
+          <ProductModal open={openProduct} handleClose={handlePrroductClose} />
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
             variant="outlined"

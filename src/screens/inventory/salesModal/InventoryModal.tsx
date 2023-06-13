@@ -25,7 +25,7 @@ import {
   godownNames,
   productsTitle,
   salesInvoiceRowData,
-} from "./SalesModalExtended";
+} from "./InventoryModalExtended";
 import { useState } from "react";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -67,15 +67,15 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
   );
 }
 
-export const SalesModal = (props: any) => {
+export const InventoryModal = (props: any) => {
   React.useEffect(() => {
     console.log(props.invoice);
   }, [props.invoice]);
   const [salesInvoice, setSalesInvoice] = useState({
-    customerName: "",
+    supplierName: "",
     city: "",
     date: new Date(),
-    Dispatched: "",
+    receivedIn: "",
   });
   const handleSalesInvoice: any = (event: SelectChangeEvent) => {
     const { name, value } = event.target;
@@ -96,7 +96,7 @@ export const SalesModal = (props: any) => {
     setProducts({ ...products, [name]: value });
   };
 
-  const [salesInvoiceRowsData, setSalesInvoiceRowsData] =
+  const [inventoryReceiptRowsData, setInventoryReceiptRowsData] =
     useState<any[]>(salesInvoiceRowData);
   const [id, setId] = useState(1);
 
@@ -111,9 +111,9 @@ export const SalesModal = (props: any) => {
       Amount: amount,
     };
     setInvoiceAmount((InvoiceAmount += Number(amount)));
-    console.log(InvoiceAmount);
 
-    setSalesInvoiceRowsData([...salesInvoiceRowsData, newProduct]);
+    setInventoryReceiptRowsData([...inventoryReceiptRowsData, newProduct]);
+
     setProducts({
       "Product Name": "",
       Price: "",
@@ -124,20 +124,20 @@ export const SalesModal = (props: any) => {
 
   const handleAddSales = () => {
     setSalesInvoice({
-      customerName: "",
+      supplierName: "",
       city: "",
       date: new Date(),
-      Dispatched: "",
+      receivedIn: "",
     });
   };
 
   const eventHandlerFunction = (add?: boolean) => {
     props.handleClose();
     setSalesInvoice({
-      customerName: "",
+      supplierName: "",
       city: "",
       date: new Date(),
-      Dispatched: "",
+      receivedIn: "",
     });
     setProducts({
       "Product Name": "",
@@ -145,8 +145,6 @@ export const SalesModal = (props: any) => {
       Quantity: "",
       Amount: "",
     });
-    setSalesInvoiceRowsData([]);
-    setInvoiceAmount(0);
     if (add) {
       handleAddSales();
     }
@@ -155,10 +153,13 @@ export const SalesModal = (props: any) => {
   const HandleActionClick = async (param: any) => {
     const amount = await (Number(param.row.Price) * Number(param.row.Quantity));
     setInvoiceAmount((InvoiceAmount -= Number(amount)));
-    const updatedItems = salesInvoiceRowsData.filter(
+    console.log(InvoiceAmount);
+
+    const updatedItems = inventoryReceiptRowsData.filter(
       (item: any) => item.id !== param.row.id
     );
-    setSalesInvoiceRowsData(updatedItems);
+
+    setInventoryReceiptRowsData(updatedItems);
   };
 
   const salesInvoiceColumnData: any = [
@@ -194,7 +195,7 @@ export const SalesModal = (props: any) => {
           id="customized-dialog-title"
           onClose={() => eventHandlerFunction(false)}
         >
-          Sales Invoice
+          Inventory Receipt
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Container>
@@ -202,14 +203,14 @@ export const SalesModal = (props: any) => {
               <Col xs={3}>
                 <FormControl fullWidth>
                   <InputLabel id="customer-name-select-label">
-                    Customer Name
+                    Supplier Name
                   </InputLabel>
                   <Select
-                    name={"customerName"}
+                    name={"supplierName"}
                     labelId="customer-name-select-label"
                     // id="customer-name-select"
                     size="small"
-                    value={salesInvoice.customerName}
+                    value={salesInvoice.supplierName}
                     label="Customer Ledger"
                     onChange={handleSalesInvoice}
                   >
@@ -260,14 +261,14 @@ export const SalesModal = (props: any) => {
               <Col xs={3}>
                 <FormControl fullWidth>
                   <InputLabel id="godown-name-select-label">
-                    Dispatched From
+                    Received In
                   </InputLabel>
                   <Select
                     name={"Dispatched"}
                     labelId="godown-name-select-label"
                     // id="customer-name-select"
                     size="small"
-                    value={salesInvoice.Dispatched}
+                    value={salesInvoice.receivedIn}
                     label="Dispatched From"
                     onChange={handleSalesInvoice}
                   >
@@ -357,13 +358,13 @@ export const SalesModal = (props: any) => {
                   height: "20rem",
                   overflow: "auto",
                 }}
-                rows={salesInvoiceRowsData}
+                rows={inventoryReceiptRowsData}
                 columns={salesInvoiceColumnData}
               />
             </Row>
             <Row>
               <Col>
-                <p style={{ float: "left" }}> Total Invoice Amount </p>
+                <p style={{ float: "left" }}> Total Receipt Amount </p>
               </Col>
               <Col>
                 <p style={{ float: "right" }}>
