@@ -20,11 +20,11 @@ import { Col, Container, Row } from "react-bootstrap";
 import { DataGrid } from "@mui/x-data-grid";
 import {
   BootstrapInput,
-  citiesName,
   customerNames,
   godownNames,
   productsTitle,
   salesInvoiceRowData,
+  salesType,
 } from "./SalesModalExtended";
 import { useState } from "react";
 
@@ -73,7 +73,7 @@ export const SalesModal = (props: any) => {
   }, [props.invoice]);
   const [salesInvoice, setSalesInvoice] = useState({
     customerName: "",
-    city: "",
+    salesType: "",
     date: new Date(),
     Dispatched: "",
   });
@@ -125,7 +125,7 @@ export const SalesModal = (props: any) => {
   const handleAddSales = () => {
     setSalesInvoice({
       customerName: "",
-      city: "",
+      salesType: "",
       date: new Date(),
       Dispatched: "",
     });
@@ -135,7 +135,7 @@ export const SalesModal = (props: any) => {
     props.handleClose();
     setSalesInvoice({
       customerName: "",
-      city: "",
+      salesType: "",
       date: new Date(),
       Dispatched: "",
     });
@@ -226,19 +226,19 @@ export const SalesModal = (props: any) => {
               </Col>
               <Col xs={3}>
                 <FormControl fullWidth>
-                  <InputLabel id="city-select-label">City</InputLabel>
+                  <InputLabel id="Sales-select-label">Sales Type</InputLabel>
                   <Select
-                    labelId="city-select-label"
-                    name={"city"}
+                    name={"salesType"}
+                    labelId="Sales-select-label"
                     size="small"
-                    value={salesInvoice.city}
-                    label="City"
+                    value={salesInvoice.salesType}
+                    label="Sales Type"
                     onChange={handleSalesInvoice}
                   >
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    {citiesName.map((name: any) => (
+                    {salesType.map((name: any) => (
                       <MenuItem value={name} key={name}>
                         {name}
                       </MenuItem>

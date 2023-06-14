@@ -1,6 +1,12 @@
+import { DataGrid } from "@mui/x-data-grid";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Row, Col, Button } from "react-bootstrap";
+import {
+  salesTransactionsColumn,
+  salesTransactionsCustomToolbar,
+  salesTransactionsRow,
+} from "./cashFlowExtended";
 
 export const CashFlow = () => {
   return (
@@ -38,6 +44,28 @@ export const CashFlow = () => {
           >
             Apply Filter
           </Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={6}>
+          <h2>Cash Inflow</h2>
+          <DataGrid
+            rows={salesTransactionsRow}
+            columns={salesTransactionsColumn}
+            slots={{
+              toolbar: salesTransactionsCustomToolbar,
+            }}
+          />
+        </Col>
+        <Col xs={6}>
+          <h2>Cash Ouflow</h2>
+          <DataGrid
+            rows={salesTransactionsRow}
+            columns={salesTransactionsColumn}
+            slots={{
+              toolbar: salesTransactionsCustomToolbar,
+            }}
+          />
         </Col>
       </Row>
     </div>

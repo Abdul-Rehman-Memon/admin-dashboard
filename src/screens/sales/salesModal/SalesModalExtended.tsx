@@ -38,18 +38,7 @@ export const customerNames: any = [
   "Lucas",
 ];
 // Array of City Names
-export const citiesName = [
-  "New York",
-  "London",
-  "Paris",
-  "Tokyo",
-  "Sydney",
-  "Rome",
-  "Dubai",
-  "Rio de Janeiro",
-  "Berlin",
-  "Cape Town",
-];
+export const salesType = ["Both", "Cash", "Credit"];
 
 // Array of Product Names
 export const productsTitle = [

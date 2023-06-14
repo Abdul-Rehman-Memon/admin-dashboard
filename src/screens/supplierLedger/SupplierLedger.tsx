@@ -47,18 +47,6 @@ export const SupplierLedger = () => {
 
   return (
     <div className="boxes-container">
-      <Row style={{ display: creditorName ? "" : "none" }}>
-        <Col xs={6}>
-          <h3
-            style={{ float: "left", marginTop: "1rem" }}
-          >{`Creditor Name: ${creditorName}`}</h3>
-        </Col>
-        <Col xs={6}>
-          <h3
-            style={{ float: "right", marginTop: "1rem" }}
-          >{`Credit Amount: ${creditAmount} $`}</h3>
-        </Col>
-      </Row>
       <Row>
         <Col xs={3}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -97,6 +85,18 @@ export const SupplierLedger = () => {
           >
             Apply Filter
           </Button>
+        </Col>
+      </Row>
+      <Row style={{ display: creditorName ? "" : "none" }}>
+        <Col xs={6}>
+          <p
+            style={{ float: "left", marginTop: "1rem" }}
+          >{`Creditor Name: ${creditorName}`}</p>
+        </Col>
+        <Col xs={6}>
+          <p
+            style={{ float: "right", marginTop: "1rem" }}
+          >{`Credit Amount: ${creditAmount} $`}</p>
         </Col>
       </Row>
       <DataGrid

@@ -51,18 +51,6 @@ export const CustomerLedger = () => {
 
   return (
     <div className="boxes-container">
-      <Row style={{ display: customerName ? "" : "none" }}>
-        <Col xs={6}>
-          <h3
-            style={{ float: "left", marginTop: "1rem" }}
-          >{`Customer Name: ${customerName}`}</h3>
-        </Col>
-        <Col xs={6}>
-          <h3
-            style={{ float: "right", marginTop: "1rem" }}
-          >{`Debit Amount: ${debitAmount} $`}</h3>
-        </Col>
-      </Row>
       <Row>
         <Col xs={3}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -103,6 +91,18 @@ export const CustomerLedger = () => {
           >
             Apply Filter
           </Button>
+        </Col>
+      </Row>
+      <Row style={{ display: customerName ? "" : "none" }}>
+        <Col xs={6}>
+          <p
+            style={{ float: "left", marginTop: "1rem" }}
+          >{`Customer Name: ${customerName}`}</p>
+        </Col>
+        <Col xs={6}>
+          <p
+            style={{ float: "right", marginTop: "1rem" }}
+          >{`Debit Amount: ${debitAmount} $`}</p>
         </Col>
       </Row>
       <DataGrid
