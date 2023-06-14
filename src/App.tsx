@@ -1,7 +1,6 @@
 import "./App.css";
 import { SidebarComponent } from "./components/Sidebar/SidebarComponent";
 import { Header } from "./components/Header/Header";
-import { Route, Routes } from "react-router-dom";
 import { Sales } from "./screens/sales/Sales";
 import { Dashboard } from "./screens/dashboard/Dashboard";
 import { Inventory } from "./screens/inventory/Inventory";
@@ -9,7 +8,27 @@ import { SupplierLedger } from "./screens/supplierLedger/SupplierLedger";
 import { CustomerLedger } from "./screens/customerLedger/customerLedger";
 import { CashFlow } from "./screens/cashFLow/cashFlow";
 import { Settings } from "./screens/settings/settings";
+import {
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
+import { useEffect } from "react";
 function App() {
+  const navigate = useNavigate();
+  const routeParam = useLocation();
+  useEffect(() => {
+    navigateTodashboard();
+  }, [routeParam]);
+
+  const navigateTodashboard = () => {
+    if (routeParam.pathname === "/") {
+      return navigate("/dashboard");
+    }
+  };
+
   return (
     <div>
       <div className="app">
