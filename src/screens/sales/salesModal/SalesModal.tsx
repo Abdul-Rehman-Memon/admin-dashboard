@@ -173,7 +173,7 @@ export const SalesModal = (props: any) => {
       renderCell: (params: any) => (
         <Button
           style={{ color: "black", borderColor: "black !important" }}
-          variant="outlined"
+          variant="contained"
           onClick={() => HandleActionClick(params)}
         >
           Remove Item
@@ -339,11 +339,10 @@ export const SalesModal = (props: any) => {
                 />
               </Col>
 
-              <Col xs={3} id="add-btn">
+              <Col xs={3}>
                 <Button
-                  color="success"
-                  style={{ color: "white !important" }}
                   variant="contained"
+                  style={{ float: "right" }}
                   onClick={handleAddProduct}
                 >
                   Add Item

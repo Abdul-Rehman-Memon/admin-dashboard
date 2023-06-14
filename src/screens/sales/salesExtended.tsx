@@ -1,7 +1,6 @@
 import { Button, Dialog, Modal } from "@mui/material";
 import {
   GridToolbarContainer,
-  GridToolbarColumnsButton,
   GridToolbarFilterButton,
   GridToolbarDensitySelector,
   GridToolbarExport,
@@ -13,7 +12,6 @@ import { useState } from "react";
 export const salesCustomToolbar = () => {
   return (
     <GridToolbarContainer>
-      <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
       <GridToolbarDensitySelector />
       <GridToolbarExport />

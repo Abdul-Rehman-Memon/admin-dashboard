@@ -1,8 +1,6 @@
 import {
   GridToolbarContainer,
-  GridToolbarColumnsButton,
   GridToolbarFilterButton,
-  GridToolbarDensitySelector,
   GridToolbarExport,
 } from "@mui/x-data-grid";
 

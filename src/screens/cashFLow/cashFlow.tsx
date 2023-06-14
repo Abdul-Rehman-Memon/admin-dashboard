@@ -1,14 +1,34 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import {
   salesTransactionsColumn,
   salesTransactionsCustomToolbar,
   salesTransactionsRow,
 } from "./cashFlowExtended";
+import { InflowModal } from "./inflowModal/inflowModal";
+import { OutflowModal } from "./outflowModal/outflowModal";
+import { useState } from "react";
+import { Button } from "@mui/material";
 
 export const CashFlow = () => {
+  const [inflowOpen, setInflowOpen]: any = useState(false);
+  const [outflowOpen, setoutflowOpen]: any = useState(false);
+
+  const handleInflowOpenModal = () => {
+    setInflowOpen(true);
+  };
+  const handleInflowCloseModal = () => {
+    setInflowOpen(false);
+  };
+  const handleOutflowOpenModal = () => {
+    setoutflowOpen(true);
+  };
+  const handleOutflowCloseModal = () => {
+    setoutflowOpen(false);
+  };
+
   return (
     <div className="boxes-container">
       <Row>
@@ -30,17 +50,29 @@ export const CashFlow = () => {
             />
           </LocalizationProvider>
         </Col>
-        <Col xs={3}></Col>
-        <Col xs={3}>
+        <Col xs={6}>
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
-            variant="outlined"
+            variant="contained"
+            onClick={handleInflowOpenModal}
           >
-            Add Sales
+            Add Inflow
           </Button>
+          <InflowModal open={inflowOpen} handleClose={handleInflowCloseModal} />
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
-            variant="outlined"
+            variant="contained"
+            onClick={handleOutflowOpenModal}
+          >
+            Add OutFlow
+          </Button>
+          <OutflowModal
+            open={outflowOpen}
+            handleClose={handleOutflowCloseModal}
+          />
+          <Button
+            style={{ float: "right", margin: "0 0.5rem" }}
+            variant="contained"
           >
             Apply Filter
           </Button>

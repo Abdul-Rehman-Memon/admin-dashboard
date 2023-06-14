@@ -144,7 +144,7 @@ export const salesdata: any = {
     {
       label: ["Socks", "T Shirts", "Pants", "Hats", "Eye Wear"],
       data: [50, 75, 68, 24, 48],
-      backgroundColor: ["black", "#808080", "#a9a9a9", "#d3d3d3", "#dcdcdc"],
+      backgroundColor: ["#0C6170", "#37BEB0", "#A4E5E0", "#DBF5F0", "#dcdcdc"],
       hoverOffset: 4,
     },
   ],
@@ -158,13 +158,13 @@ export const lineChartdata: any = {
     {
       label: ["Sales"],
       data: [65, 59, 80, 81, 56, 55, 40],
-      borderColor: "black",
+      borderColor: "#0C6170",
       tension: 0.1,
     },
     {
       label: ["Revenue"],
       data: [81, 56, 55, 40, 65, 59, 80],
-      borderColor: "#d3d3d3",
+      borderColor: "#37BEB0",
       tension: 0.1,
     },
   ],
@@ -185,7 +185,7 @@ export const Inventorydata: any = {
     {
       label: ["Socks", "T Shirts", "Pants", "Hats", "Eye Wear"],
       data: [50, 75, 68, 24, 48],
-      backgroundColor: ["black", "#808080", "#a9a9a9", "#d3d3d3", "#dcdcdc"],
+      backgroundColor: ["#0C6170", "#37BEB0", "#A4E5E0", "#DBF5F0", "#dcdcdc"],
       hoverOffset: 4,
     },
   ],
@@ -199,38 +199,20 @@ export const salesBifurcation = {
     {
       label: "Online Sales",
       data: [20, 18, 30, 20, 40, 35, 10],
-      backgroundColor: ["black"],
+      backgroundColor: ["#0C6170"],
     },
     {
       label: "Offline Sales",
       data: [45, 49, 50, 61, 16, 20, 30],
-      backgroundColor: ["#a9a9a9"],
+      backgroundColor: ["#37BEB0"],
     },
     {
       label: "Total Sales",
       data: [65, 59, 80, 81, 56, 55, 40],
-      backgroundColor: ["#d3d3d3"],
+      backgroundColor: ["#A4E5E0"],
     },
   ],
 };
-
-// const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-// export const salesBifurcation = {
-//   labels,
-//   datasets: [
-//     {
-//       label: "Dataset 1",
-//       data: [45, 49, 50, 61, 16, 20, 30],
-//       backgroundColor: "rgba(255, 99, 132, 0.5)",
-//     },
-//     {
-//       label: "Dataset 2",
-//       data: [45, 49, 50, 61, 16, 20, 30],
-//       backgroundColor: "rgba(53, 162, 235, 0.5)",
-//     },
-//   ],
-// };
 
 export const salesBifurcationOptions = {
   scales: {

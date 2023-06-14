@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { PersonAdd, Settings, Logout } from "@mui/icons-material";
 import NotificationsIcon from "@mui/icons-material/Notifications";

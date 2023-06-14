@@ -1,6 +1,6 @@
 import { DataGrid } from "@mui/x-data-grid";
-import React, { useEffect, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
 import {
   useCustomerLedgerColumnData,
   customerLedgerCustomToolbar,
@@ -10,6 +10,7 @@ import {
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { CustomerModal } from "./CustomerModal/customerModal";
+import { Button } from "@mui/material";
 
 export const CustomerLedger = () => {
   const customerInfo = useCustomerInfo();
@@ -74,7 +75,7 @@ export const CustomerLedger = () => {
         <Col xs={3}>
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
-            variant="outlined"
+            variant="contained"
             onClick={handleOpenCustomerModal}
           >
             Add Customer
@@ -87,7 +88,7 @@ export const CustomerLedger = () => {
           )}
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
-            variant="outlined"
+            variant="contained"
           >
             Apply Filter
           </Button>

@@ -1,6 +1,5 @@
 import {
   GridToolbarContainer,
-  GridToolbarColumnsButton,
   GridToolbarFilterButton,
   GridToolbarDensitySelector,
   GridToolbarExport,
@@ -11,7 +10,6 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 export const customerLedgerCustomToolbar = () => {
   return (
     <GridToolbarContainer>
-      <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
       <GridToolbarDensitySelector />
       <GridToolbarExport />
@@ -207,7 +205,7 @@ export const useCustomerLedgerColumnData: any = () => {
     return (
       <Button
         style={{ color: "black", borderColor: "black !important" }}
-        variant="outlined"
+        variant="contained"
         onClick={() => HandleButtonClick()}
       >
         {props.title}
@@ -315,7 +313,7 @@ let customersColumn: any = [
     renderCell: (params: any) => (
       <Button
         style={{ color: "black", borderColor: "black !important" }}
-        variant="outlined"
+        variant="contained"
       >
         Invoice
       </Button>

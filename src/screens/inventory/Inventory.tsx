@@ -53,7 +53,7 @@ export const Inventory = () => {
         <Col xs={6}>
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
-            variant="outlined"
+            variant="contained"
             onClick={handleInventoryOpen}
           >
             Add Inventory
@@ -64,7 +64,7 @@ export const Inventory = () => {
           />
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
-            variant="outlined"
+            variant="contained"
             onClick={handleProductOpen}
           >
             Add Product
@@ -72,7 +72,7 @@ export const Inventory = () => {
           <ProductModal open={openProduct} handleClose={handlePrroductClose} />
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
-            variant="outlined"
+            variant="contained"
           >
             Apply Filter
           </Button>

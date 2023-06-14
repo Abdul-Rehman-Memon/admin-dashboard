@@ -1,6 +1,5 @@
 import {
   GridToolbarContainer,
-  GridToolbarColumnsButton,
   GridToolbarFilterButton,
   GridToolbarDensitySelector,
   GridToolbarExport,
@@ -11,7 +10,6 @@ import { useNavigate, useParams } from "react-router-dom";
 export const supplierLegerCustomToolbar = () => {
   return (
     <GridToolbarContainer>
-      <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
       <GridToolbarDensitySelector />
       <GridToolbarExport />

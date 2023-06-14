@@ -80,15 +80,15 @@ export const Dashboard = () => {
           <div className="boxes" id="map-box">
             <h2> Sales By Region </h2>
             <ComposableMap>
-              <ZoomableGroup center={[789, 30]} zoom={10}>
+              <ZoomableGroup center={[789, 30]} zoom={3}>
                 <Geographies geography={geoUrl}>
                   {({ geographies }) =>
                     geographies.map((geo) => (
                       <Geography
                         key={geo.rsmKey}
                         geography={geo}
-                        fill="#f3f3f3"
-                        stroke="black"
+                        fill="#A4E5E0"
+                        stroke="#0C6170"
                       />
                     ))
                   }

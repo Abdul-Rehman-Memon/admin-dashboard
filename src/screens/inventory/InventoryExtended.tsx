@@ -1,7 +1,6 @@
 import { Button, Dialog, Modal } from "@mui/material";
 import {
   GridToolbarContainer,
-  GridToolbarColumnsButton,
   GridToolbarFilterButton,
   GridToolbarDensitySelector,
   GridToolbarExport,
@@ -11,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 export const InventoryCustomToolbar = () => {
   return (
     <GridToolbarContainer>
-      <GridToolbarColumnsButton />
       <GridToolbarFilterButton />
       <GridToolbarDensitySelector />
       <GridToolbarExport />
@@ -244,7 +242,7 @@ export const useInventoryColumnData: any = () => {
       renderCell: (params: any) => (
         <Button
           style={{ color: "black", borderColor: "black !important" }}
-          variant="outlined"
+          variant="contained"
           onClick={() => handleButtonClick(params.row.id)}
         >
           View Supplier Ledger
@@ -258,7 +256,7 @@ export const useInventoryColumnData: any = () => {
       renderCell: (params: any) => (
         <Button
           style={{ color: "black", borderColor: "black !important" }}
-          variant="outlined"
+          variant="contained"
         >
           Print Receipt
         </Button>

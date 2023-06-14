@@ -15,7 +15,14 @@ export const SidebarComponent = () => {
 
   useEffect(() => {});
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: "#37BEB0",
+        height: "100vh",
+        borderRight: "2px solid #A4E5E0",
+      }}
+    >
+      {/* // <div style={{ backgroundColor: "#0C6170", height: "100vh" }}> */}
       <div id="collapse-btn">
         <button
           className="sb-button"
@@ -73,6 +80,6 @@ export const SidebarComponent = () => {
           <MenuItem icon={<LogoutIcon />}> Logout </MenuItem>
         </Menu>
       </Sidebar>
-    </>
+    </div>
   );
 };

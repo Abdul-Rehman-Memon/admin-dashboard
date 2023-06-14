@@ -174,7 +174,7 @@ export const InventoryModal = (props: any) => {
       renderCell: (params: any) => (
         <Button
           style={{ color: "black", borderColor: "black !important" }}
-          variant="outlined"
+          variant="contained"
           onClick={() => HandleActionClick(params)}
         >
           Remove Item
