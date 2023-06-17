@@ -8,6 +8,17 @@
 *:focus {
   outline: none !important ;
 }
+#login-img-box {
+  width: 45%;
+  padding-left: 5%;
+}
+#login-form-box input {
+  margin: auto !important;
+}
+#login-form-box {
+  width: 50%;
+  padding-top: 3rem;
+}
 .app {
   display: flex;
   flex-direction: row;
@@ -59,6 +70,7 @@
 }
 .sb-button {
   border: none;
+  color: white !important;
   background-color: transparent;
   margin: 1.2rem 1rem;
 }
@@ -81,7 +93,7 @@
 
 .boxes-container {
   background-color: #fff !important;
-  height: 86%;
+  min-height: 86%;
   border-radius: 0.75rem;
   padding: 1.5rem;
   margin: 1rem;
@@ -158,8 +170,13 @@
   background-color: rgb(57, 83, 158, 1) !important;
 }
 .MuiTypography-root {
-  font-size: 1.5rem !important;
+  font-size: 1rem !important;
   font-weight: bold !important;
+  color: #0c6170 !important;
+}
+
+.MuiFilledInput-root {
+  background-color: #dbf5f0 !important;
 }
 
 #pageTitleDiv {
@@ -227,4 +244,12 @@ button {
 }
 .MuiListItemText-root .MuiTypography-root {
   font-size: 14px !important;
+}
+
+.MuiAlert-standardError {
+  background-color: red !important;
+  color: white !important;
+}
+.MuiAlert-standardError .MuiSvgIcon-root {
+  color: white !important;
 }

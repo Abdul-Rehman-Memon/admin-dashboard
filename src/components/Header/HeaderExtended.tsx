@@ -12,25 +12,25 @@ export const useTabTitle = () => {
   const currentRoute = location.pathname;
   const routeTitle: any = () => {
     switch (currentRoute) {
-      case "/dashboard":
+      case "/admin/dashboard":
         settabTitle("Dashboard");
         break;
-      case "/cash-flow":
+      case "/admin/cash-flow":
         settabTitle("Cash Flow");
         break;
-      case "/sales":
+      case "/admin/sales":
         settabTitle("Sales");
         break;
-      case "/customer-ledger":
+      case "/admin/customer-ledger":
         settabTitle("Customer Ledger");
         break;
-      case "/inventory":
+      case "/admin/inventory":
         settabTitle("Inventory");
         break;
-      case "/supplier-ledger":
+      case "/admin/supplier-ledger":
         settabTitle("Supplier Ledger");
         break;
-      case "/settings":
+      case "/admin/settings":
         settabTitle("Settings");
         break;
     }

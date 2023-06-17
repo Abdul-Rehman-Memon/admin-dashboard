@@ -8,10 +8,16 @@ import PeopleIcon from "@mui/icons-material/People";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 export const SidebarComponent = () => {
+  const navigate = useNavigate();
   const [collapsed, setCollapsed] = React.useState(false);
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
+    return;
+  };
 
   useEffect(() => {});
   return (
@@ -22,7 +28,6 @@ export const SidebarComponent = () => {
         borderRight: "2px solid #A4E5E0",
       }}
     >
-      {/* // <div style={{ backgroundColor: "#0C6170", height: "100vh" }}> */}
       <div id="collapse-btn">
         <button
           className="sb-button"
@@ -37,47 +42,49 @@ export const SidebarComponent = () => {
         <Menu>
           <MenuItem
             icon={<DashboardCustomizeRoundedIcon />}
-            component={<Link to="/dashboard" />}
+            component={<Link to="/admin/dashboard" />}
           >
             Dashboard
           </MenuItem>
           <MenuItem
             icon={<CurrencyExchangeIcon />}
-            component={<Link to="/cash-flow" />}
+            component={<Link to="/admin/cash-flow" />}
           >
             Cash Flows
           </MenuItem>
           <MenuItem
             icon={<ShoppingCartIcon />}
-            component={<Link to="/sales" />}
+            component={<Link to="/admin/sales" />}
           >
             Sales
           </MenuItem>
           <MenuItem
             icon={<PeopleIcon />}
-            component={<Link to="/customer-ledger" />}
+            component={<Link to="/admin/customer-ledger" />}
           >
             Customer
           </MenuItem>
           <MenuItem
             icon={<InventoryRoundedIcon />}
-            component={<Link to="/inventory" />}
+            component={<Link to="/admin/inventory" />}
           >
             Inventory
           </MenuItem>
           <MenuItem
             icon={<LocalShippingIcon />}
-            component={<Link to="/supplier-ledger" />}
+            component={<Link to="/admin/supplier-ledger" />}
           >
             Supplier
           </MenuItem>
           <MenuItem
             icon={<ManageAccountsIcon />}
-            component={<Link to="/settings" />}
+            component={<Link to="/admin/settings" />}
           >
             Setting
           </MenuItem>
-          <MenuItem icon={<LogoutIcon />}> Logout </MenuItem>
+          <div onClick={handleLogout}>
+            <MenuItem icon={<LogoutIcon />}>Logout</MenuItem>
+          </div>
         </Menu>
       </Sidebar>
     </div>
