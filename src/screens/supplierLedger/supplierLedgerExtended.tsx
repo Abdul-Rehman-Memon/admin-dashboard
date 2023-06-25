@@ -208,7 +208,7 @@ export const useSupplierLegerColumnData: any = () => {
   const Btn = (props: any) => {
     const HandleButtonClick = () => {
       if (props.btn === "supplier") {
-        navigate(`/supplier-ledger/${props.params.row.id}`);
+        navigate(`/admin/supplier-ledger/${props.params.row.id}`);
       }
       if (props.btn === "Modal") {
         return;

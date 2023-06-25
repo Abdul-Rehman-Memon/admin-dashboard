@@ -5,9 +5,6 @@ import {
   GridToolbarDensitySelector,
   GridToolbarExport,
 } from "@mui/x-data-grid";
-import { useNavigate } from "react-router-dom";
-import { SalesModal } from "./salesModal/SalesModal";
-import { useState } from "react";
 
 export const salesCustomToolbar = () => {
   return (

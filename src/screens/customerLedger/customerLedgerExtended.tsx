@@ -200,7 +200,7 @@ export const useCustomerLedgerColumnData: any = () => {
   const Btn = (props: any) => {
     const HandleButtonClick = () => {
       console.log(props.params.row.id);
-      return navigate(`/customer-ledger/${props.params.row.id}`);
+      return navigate(`/admin/customer-ledger/${props.params.row.id}`);
     };
     return (
       <Button
@@ -313,7 +313,7 @@ let customersColumn: any = [
     renderCell: (params: any) => (
       <Button
         style={{ color: "black", borderColor: "black !important" }}
-        variant="contained"
+        variant="text"
       >
         Invoice
       </Button>

@@ -225,7 +225,7 @@ export const InventoryRowData: any = [
 export const useInventoryColumnData: any = () => {
   const navigate = useNavigate();
   const handleButtonClick = (id: any) => {
-    navigate("/supplier-ledger");
+    navigate("/admin/supplier-ledger");
   };
   const InventoryColumnData = [
     { id: 1, width: "50", field: "Id" },

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 export const Sales = () => {
   const navigate = useNavigate();
   const handleButtonClickRoute = (id: any) => {
-    return navigate("/customer-ledger");
+    return navigate("/admin/customer-ledger");
   };
   const [isModalOpen, setIsModalOpen] = useState(false);
 
