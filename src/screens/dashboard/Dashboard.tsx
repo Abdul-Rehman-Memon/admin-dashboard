@@ -13,7 +13,7 @@ import {
 } from "./DashboardExtension";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { StaticDateTimePicker } from "@mui/x-date-pickers";
+import { DatePicker, StaticDateTimePicker } from "@mui/x-date-pickers";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -34,6 +34,7 @@ import {
   Marker,
   ZoomableGroup,
 } from "react-simple-maps";
+import { Button } from "@mui/material";
 ChartJS.register(
   ArcElement,
   CategoryScale,
@@ -50,15 +51,50 @@ const geoUrl =
 
 export const Dashboard = () => {
   return (
-    <Container fluid style={{ padding: "0.5rem !important " }}>
-      <Row style={{ minHeight: "23rem" }}>
+    <Container id="dashboard" fluid style={{ padding: "0.5rem !important " }}>
+      {/* <Row>
         <Col xs={3}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              sx={{ width: "100%", backgroundColor: "white !important" }}
+              label="Start Date"
+              slotProps={{ textField: { size: "small" } }}
+            />
+          </LocalizationProvider>
+        </Col>
+        <Col xs={3}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              sx={{ width: "100%", backgroundColor: "white !important" }}
+              label="End Date"
+              slotProps={{ textField: { size: "small" } }}
+            />
+          </LocalizationProvider>
+        </Col>
+        <Col xs={3}></Col>
+        <Col xs={3}>
+          <Button
+            style={{ float: "right", margin: "0 0.5rem" }}
+            variant="contained"
+          >
+            Apply Filter
+          </Button>
+        </Col>
+      </Row> */}
+      <Row style={{ minHeight: "23rem" }}>
+        <Col s={12} md={6} lg={3}>
           <div className="boxes">
             <h2>Sales By Product</h2>
             <Doughnut data={salesdata} style={{ margin: "auto" }} />
           </div>
         </Col>
-        <Col xs={6}>
+        <Col s={12} md={6} lg={3}>
+          <div className="boxes">
+            <h2>Inventory</h2>
+            <Pie style={{ margin: "auto" }} data={Inventorydata} />
+          </div>
+        </Col>
+        <Col md={12} lg={6}>
           <div className="boxes">
             <h2>Sales By Month</h2>
             <Line
@@ -68,15 +104,9 @@ export const Dashboard = () => {
             />
           </div>
         </Col>
-        <Col xs={3}>
-          <div className="boxes">
-            <h2>Inventory</h2>
-            <Pie style={{ margin: "auto" }} data={Inventorydata} />
-          </div>
-        </Col>
       </Row>
       <Row style={{ minHeight: "19rem" }}>
-        <Col xs={6}>
+        <Col md={12} lg={6}>
           <div className="boxes" id="map-box">
             <h2> Sales By Region </h2>
             <ComposableMap>
@@ -93,14 +123,16 @@ export const Dashboard = () => {
                     ))
                   }
                 </Geographies>
-                <Marker coordinates={[789, 30]}>
-                  <circle r={3} fill="#FF5533" />
+                <Marker coordinates={[778, 30]}>
+                  <text r={3} fill="#FF5533">
+                    Pakistan
+                  </text>
                 </Marker>
               </ZoomableGroup>
             </ComposableMap>
           </div>
         </Col>
-        <Col xs={6}>
+        <Col md={12} lg={6}>
           <div className="boxes">
             <h2>Sales Bifurcation</h2>
             <Bar options={salesBifurcationOptions} data={salesBifurcation} />
@@ -108,7 +140,7 @@ export const Dashboard = () => {
         </Col>
       </Row>
       <Row>
-        <Col xs={6}>
+        <Col md={12} lg={6}>
           <div
             className="boxes"
             id="task-box"
@@ -122,7 +154,7 @@ export const Dashboard = () => {
             />
           </div>
         </Col>
-        <Col xs={6}>
+        <Col md={12} lg={6}>
           <div className="boxes">
             <h2>Consignment Dates</h2>
             <LocalizationProvider dateAdapter={AdapterDayjs}>

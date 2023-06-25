@@ -233,19 +233,15 @@ export const useInventoryColumnData: any = () => {
     { id: 3, width: "150", field: "Transanction Amount" },
     { id: 4, width: "150", field: "City" },
     { id: 5, width: "150", field: "Date" },
-    { id: 6, width: "150", field: "Dispatched From" },
+    { id: 6, width: "250", field: "Dispatched From" },
     { id: 7, width: "150", field: "Receipt ID" },
     {
       id: 8,
-      width: "250",
+      width: "200",
       field: "Ledger",
       renderCell: (params: any) => (
-        <Button
-          style={{ color: "black", borderColor: "black !important" }}
-          variant="contained"
-          onClick={() => handleButtonClick(params.row.id)}
-        >
-          View Supplier Ledger
+        <Button variant="text" onClick={() => handleButtonClick(params.row.id)}>
+          View Ledger
         </Button>
       ),
     },
@@ -254,12 +250,7 @@ export const useInventoryColumnData: any = () => {
       width: "250",
       field: "Transaction",
       renderCell: (params: any) => (
-        <Button
-          style={{ color: "black", borderColor: "black !important" }}
-          variant="contained"
-        >
-          Print Receipt
-        </Button>
+        <Button variant="text">Print Receipt</Button>
       ),
     },
   ];

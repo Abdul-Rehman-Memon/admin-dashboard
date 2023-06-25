@@ -1,5 +1,5 @@
 import { DataGrid } from "@mui/x-data-grid";
-import { Button, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import {
   supplierLegerRowData,
   supplierLegerCustomToolbar,
@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { SupplierModal } from "./supplierModal/supplierModal";
+import { Button } from "@mui/material";
 
 export const SupplierLedger = () => {
   const creditorInfo = useCreditorInfo();
@@ -70,7 +71,7 @@ export const SupplierLedger = () => {
         <Col xs={3}>
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
-            variant="outlined"
+            variant="contained"
             onClick={handleOpenCustomerModal}
           >
             Add Supplier
@@ -81,7 +82,7 @@ export const SupplierLedger = () => {
           />
           <Button
             style={{ float: "right", margin: "0 0.5rem" }}
-            variant="outlined"
+            variant="contained"
           >
             Apply Filter
           </Button>

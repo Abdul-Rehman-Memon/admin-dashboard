@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import {
   GridToolbarContainer,
   GridToolbarFilterButton,
@@ -5,7 +6,6 @@ import {
   GridToolbarExport,
 } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 export const customerLedgerCustomToolbar = () => {
   return (
@@ -192,7 +192,7 @@ export const useCustomerLedgerColumnData: any = () => {
       width: "250",
       field: "Ledger",
       renderCell: (params: any) => (
-        <Btn title={"View Customer Ledger"} params={params} />
+        <Btn title={"View Ledger"} params={params} />
       ),
     },
   ];
@@ -205,7 +205,7 @@ export const useCustomerLedgerColumnData: any = () => {
     return (
       <Button
         style={{ color: "black", borderColor: "black !important" }}
-        variant="contained"
+        variant="text"
         onClick={() => HandleButtonClick()}
       >
         {props.title}

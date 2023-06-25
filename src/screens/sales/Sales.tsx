@@ -43,7 +43,7 @@ export const Sales = () => {
       renderCell: (params: any) => (
         <Button
           style={{ color: "black", borderColor: "black !important" }}
-          variant="contained"
+          variant="text"
           onClick={() => {
             handleInvoiceModalButton(params);
           }}
@@ -59,10 +59,10 @@ export const Sales = () => {
       renderCell: (params: any) => (
         <Button
           style={{ color: "black", borderColor: "black !important" }}
-          variant="contained"
+          variant="text"
           onClick={() => handleButtonClickRoute(params.row.id)}
         >
-          View Customer Ledger
+          View Ledger
         </Button>
       ),
     },

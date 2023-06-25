@@ -7,14 +7,6 @@ import {
 } from "react-router-dom";
 import { SidebarComponent } from "../../components/Sidebar/SidebarComponent";
 import { Header } from "../../components/Header/Header";
-import { CashFlow } from "../cashFLow/cashFlow";
-import { CustomerLedger } from "../customerLedger/customerLedger";
-import { Sales } from "../sales/Sales";
-import { SupplierLedger } from "../supplierLedger/SupplierLedger";
-import { Dashboard } from "../dashboard/Dashboard";
-import { Inventory } from "../inventory/Inventory";
-import { Settings } from "../settings/settings";
-import { environment } from "../../bootstrap/environment/environment";
 import { useEffect } from "react";
 
 export const Admin = () => {

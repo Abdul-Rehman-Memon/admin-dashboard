@@ -159,12 +159,14 @@ export const lineChartdata: any = {
       label: ["Sales"],
       data: [65, 59, 80, 81, 56, 55, 40],
       borderColor: "#0C6170",
+      backgroundColor: "#0C6170",
       tension: 0.1,
     },
     {
       label: ["Revenue"],
       data: [81, 56, 55, 40, 65, 59, 80],
       borderColor: "#37BEB0",
+      backgroundColor: "#37BEB0",
       tension: 0.1,
     },
   ],
@@ -172,7 +174,7 @@ export const lineChartdata: any = {
 export const lineChartOptions: any = {
   plugins: {
     legend: {
-      display: false, // Hide legend labels
+      display: true, // Hide legend labels
     },
   },
 };
@@ -221,3 +223,11 @@ export const salesBifurcationOptions = {
     },
   },
 };
+export const countries: any = [
+  { name: "United States", coordinates: [37.0902, -95.7129] },
+  { name: "Canada", coordinates: [56.1304, -106.3468] },
+  { name: "United Kingdom", coordinates: [55.3781, -3.436] },
+  { name: "Germany", coordinates: [51.1657, 10.4515] },
+  { name: "France", coordinates: [46.2276, 2.2137] },
+  // Add more countries as needed
+];

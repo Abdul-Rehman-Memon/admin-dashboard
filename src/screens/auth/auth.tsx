@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import login from "./../../assets/login-screen.jpg";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import {
@@ -11,9 +11,6 @@ import {
   Typography,
 } from "@mui/material";
 import { Col, Container, Row } from "react-bootstrap";
-import { firebaseApp } from "../../bootstrap/login/appLogin";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { environment } from "../../bootstrap/environment/environment";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const Auth = () => {
@@ -46,54 +43,16 @@ export const Auth = () => {
     });
   };
   const handleSetAuthForm = (event: any) => {
-    if (
-      event.type === "click" ||
-      (event.type === "keyup" && event.key === "Enter")
-    ) {
-      console.log("worked");
-
-      const authSubmit = getAuth(firebaseApp);
-      signInWithEmailAndPassword(authSubmit, auth.email, auth.password)
-        .then(async (userCredential: any) => {
-          const user = userCredential.user;
-          if (user) {
-            await setOpenSnackBar({
-              option: true,
-              value: "Login Successful",
-              vertical: "top",
-              horizontal: "right",
-              color: "success",
-            });
-            localStorage.setItem(environment.tokenKey, JSON.stringify(user));
-            navigateToAdmin();
-          }
-        })
-        .catch((error: any) => {
-          if (error.message) {
-            setOpenSnackBar({
-              ...openSnackBar,
-              option: true,
-              value: error.message,
-              vertical: "top",
-              horizontal: "right",
-              color: "error",
-            });
-          }
-        });
-
-      setAuth({
-        email: "",
-        password: "",
-      });
-    }
+    setAuth({
+      email: "",
+      password: "",
+    });
   };
   const navigateToAdmin = () => {
-    if (routeParam.pathname === "/") {
-      const token: any = localStorage.getItem(environment.tokenKey);
-      if (token) {
-        return navigate("/admin");
-      }
-    }
+    // if (routeParam.pathname === "") {
+    navigate("/admin");
+    return;
+    // }
   };
   return (
     <Container fluid>
@@ -115,10 +74,10 @@ export const Auth = () => {
         </Alert>
       </Snackbar>
       <Row>
-        <Col xs={6} id="login-img-box">
+        <Col lg={6} id="login-img-box" className="d-none d-lg-block">
           <img src={login} alt="" height={"100%"} width={"100%"} />
         </Col>
-        <Col xs={6} id="login-form-box">
+        <Col md={12} lg={6} id="login-form-box">
           <Box
             sx={{
               margin: "1rem auto",
@@ -211,8 +170,7 @@ export const Auth = () => {
             <Button
               sx={{ width: "100%" }}
               variant="contained"
-              onClick={handleSetAuthForm}
-              onKeyUp={handleSetAuthForm}
+              onClick={navigateToAdmin}
             >
               Log in
             </Button>
@@ -232,9 +190,8 @@ export const Auth = () => {
                   <LinkedInIcon sx={{ float: "right" }} />
                 </a>
               </Typography>
-              <Typography>
-                email: demo@test.com
-                <span style={{ float: "right" }}> Password: 11223344 </span>
+              <Typography style={{ textAlign: "center" }}>
+                (Just Click On Login Button to continue)
               </Typography>
             </Box>
           </Box>

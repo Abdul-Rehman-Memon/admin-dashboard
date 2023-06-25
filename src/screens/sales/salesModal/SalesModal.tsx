@@ -307,7 +307,7 @@ export const SalesModal = (props: any) => {
                 </FormControl>
               </Col>
               <Col xs={3}>
-                <FormControl fullWidth>
+                {/* <FormControl fullWidth>
                   <InputLabel htmlFor="product-select-native">Price</InputLabel>
                   <NativeSelect
                     name={"Price"}
@@ -325,7 +325,16 @@ export const SalesModal = (props: any) => {
                       </option>
                     ))}
                   </NativeSelect>
-                </FormControl>
+                </FormControl> */}
+                <TextField
+                  name={"price"}
+                  size={"small"}
+                  fullWidth={true}
+                  onChange={handleProducts}
+                  value={products.Quantity}
+                  label="Price"
+                  id="outlined-size-normal"
+                />
               </Col>
               <Col xs={3}>
                 <TextField

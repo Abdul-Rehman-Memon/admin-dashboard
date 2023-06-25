@@ -8,18 +8,67 @@ import PeopleIcon from "@mui/icons-material/People";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 export const SidebarComponent = () => {
   const navigate = useNavigate();
-  const [collapsed, setCollapsed] = React.useState(false);
+  const [collapsed, setCollapsed] = React.useState(true);
   const handleLogout = () => {
     localStorage.clear();
     navigate("/");
     return;
   };
 
+  const location = useLocation();
+  const currentRoute = location.pathname;
+
   useEffect(() => {});
+
+  const menuItem = [
+    {
+      id: 1,
+      icon: <DashboardCustomizeRoundedIcon />,
+      route: "/admin/dashboard",
+      title: "Dashboard",
+    },
+    {
+      id: 2,
+      icon: <CurrencyExchangeIcon />,
+      route: "/admin/cash-flow",
+      title: "Cash Flows",
+    },
+    {
+      id: 3,
+      icon: <ShoppingCartIcon />,
+      route: "/admin/sales",
+      title: "Sales",
+    },
+    {
+      id: 4,
+      icon: <PeopleIcon />,
+      route: "/admin/customer-ledger",
+      title: "Customer",
+    },
+    {
+      id: 5,
+      icon: <InventoryRoundedIcon />,
+      route: "/admin/inventory",
+      title: "Inventory",
+    },
+    {
+      id: 6,
+      icon: <LocalShippingIcon />,
+      route: "/admin/supplier-ledger",
+      title: "Supplier",
+    },
+    {
+      id: 7,
+      icon: <ManageAccountsIcon />,
+      route: "/admin/settings",
+      title: "Setting",
+    },
+  ];
+
   return (
     <div
       style={{
@@ -40,13 +89,17 @@ export const SidebarComponent = () => {
       </div>
       <Sidebar className="sidebar" collapsed={collapsed}>
         <Menu>
-          <MenuItem
-            icon={<DashboardCustomizeRoundedIcon />}
-            component={<Link to="/admin/dashboard" />}
-          >
-            Dashboard
-          </MenuItem>
-          <MenuItem
+          {menuItem.map((item: any) => (
+            <MenuItem
+              key={item.id}
+              icon={item.icon}
+              component={<Link to={item.route} />}
+              className={currentRoute === item.route ? "active" : ""}
+            >
+              {item.title}
+            </MenuItem>
+          ))}
+          {/*<MenuItem
             icon={<CurrencyExchangeIcon />}
             component={<Link to="/admin/cash-flow" />}
           >
@@ -81,7 +134,7 @@ export const SidebarComponent = () => {
             component={<Link to="/admin/settings" />}
           >
             Setting
-          </MenuItem>
+          </MenuItem> */}
           <div onClick={handleLogout}>
             <MenuItem icon={<LogoutIcon />}>Logout</MenuItem>
           </div>
